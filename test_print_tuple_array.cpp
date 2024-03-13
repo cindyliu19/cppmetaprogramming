@@ -1,3 +1,10 @@
+/* This is a sample for template and tuple usage
+ *
+ * Author: Cindy Liu
+ * Date: Mar. 13, 2024
+ * Note: If you use clang compiler, you should add -std=c++20 option
+ */
+
 #include <array>
 #include <iostream>
 #include <utility>
@@ -56,8 +63,7 @@ auto&  operator<<(std::basic_ostream<Ch, Tr>& os, const std::array<T, N> & arr)
    (std::make_index_sequence<N>()); 
     return os;}
 
-int main()
-{
+int main() {
     print_sequence(std::integer_sequence<unsigned, 9, 2, 5, 1, 9, 1, 6>{});
     print_sequence(std::make_integer_sequence<int, 20>{});
     print_sequence(std::make_index_sequence<10>{});
@@ -68,10 +74,12 @@ int main()
     // convert an array into a tuple
     auto tuple = a2t(array);
     static_assert(std::is_same_v<decltype(tuple),
-                                 std::tuple<int, int, int, int>>, "");
+                  std::tuple<int, int, int, int>>, "");
                                  
-     // print the array to cout
-   std::cout << "The Array: " << array << '\n';
+    // print the array to cout
+    std::cout << "The Array: " << array << '\n';
     // print the tuple to cout
     std::cout << "The tuple: " << tuple << '\n';
+
+    return 0;
 }
